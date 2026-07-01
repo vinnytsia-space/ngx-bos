@@ -1,0 +1,60 @@
+<div class="grid gap-4">
+	<div
+		class="flex flex-col gap-4 rounded-[var(--radius-card)] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] p-5 shadow-[var(--shadow-sm)] sm:p-4"
+	>
+		<div class="flex flex-col gap-3">
+			<div class="flex flex-col gap-3">
+				<ngx-file
+					mode="single-image"
+					view="thumb-only"
+					[wImage]="userService.thumb()"
+					(wImageChange)="updateThumb($event || '')"
+					[container]="'user'"
+					[name]="userService.user()._id + '.jpg'"
+					[accept]="'image/*'"
+					[clearable]="false"
+					[preview]="true"
+					[cropWidth]="512"
+					[cropHeight]="512"
+				></ngx-file>
+
+				<form
+					(submit)="wFormSubmit(); $event.preventDefault()"
+					class="flex flex-col gap-3"
+				>
+					<winput
+						[placeholder]="translateService.translate('Введіть ім\'я...')()"
+						[formField]="profileForm.name"
+					></winput>
+
+					<winput
+						[placeholder]="translateService.translate('Введіть телефон...')()"
+						[formField]="profileForm.phone"
+						type="tel"
+					></winput>
+
+					<winput
+						[placeholder]="translateService.translate('Введіть опис...')()"
+						[formField]="profileForm.bio"
+						type="textarea"
+					></winput>
+
+					<div class="mt-2 flex flex-wrap gap-2">
+						<wbutton [disabled]="isSubmitDisabled()" type="primary">
+							<span translate>Оновити</span>
+						</wbutton>
+
+						<wbutton
+							(wClick)="userService.logout()"
+							type="secondary"
+						>
+							<material-icon icon="logout"></material-icon>
+
+							<span translate>Вийти</span>
+						</wbutton>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

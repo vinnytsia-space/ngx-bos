@@ -1,0 +1,31 @@
+@use '../utils/vars' as *;
+
+html {
+	font-size: var(--fs);
+	block-size: 100%;
+	color-scheme: light;
+}
+
+/* dark mode is driven by runtime attribute, not a class */
+html[data-mode='dark'] {
+	color-scheme: dark;
+}
+
+body {
+	min-block-size: 100%;
+	margin: 0;
+	font-family: var(--ff-base);
+	letter-spacing: var(--letter-spacing);
+	color: var(--c-text-primary);
+	background: var(--c-bg-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}

@@ -1,0 +1,60 @@
+<div class="grid gap-4">
+	<div
+		class="flex flex-col gap-4 rounded-[var(--radius-card)] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] p-5 shadow-[var(--shadow-sm)] sm:p-4"
+	>
+		<div class="flex flex-col gap-3">
+			<div class="flex flex-col gap-3">
+				<form
+					(submit)="wSecuritySubmit(); $event.preventDefault()"
+					class="flex flex-col gap-3"
+				>
+					<winput
+						[placeholder]="translateService.translate('Введіть поточний пароль...')()"
+						[formField]="securityForm.currentPassword"
+						type="password"
+					></winput>
+
+					<winput
+						[placeholder]="translateService.translate('Введіть новий пароль...')()"
+						[formField]="securityForm.newPassword"
+						type="password"
+					></winput>
+
+					<winput
+						[placeholder]="translateService.translate('Підтвердіть новий пароль...')()"
+						[formField]="securityForm.confirmPassword"
+						type="password"
+					></winput>
+
+					<wbutton
+						[disabled]="isSecurityDisabled()"
+						type="primary"
+						class="mt-2"
+					>
+						<span translate>Оновити пароль</span>
+					</wbutton>
+				</form>
+
+				<icon-theme size="48px" [showText]="true"></icon-theme>
+
+				@if (currentLanguage()?.name) {
+				<button
+					(click)="nextLanguage()"
+					class="inline-flex flex-1 items-center justify-center gap-2 rounded-[var(--radius)] bg-transparent px-2 py-2 text-sm text-[var(--c-text-primary)]"
+					[attr.aria-label]="translateService.translate('Перемкнути мову')()"
+					type="button"
+				>
+					<span class="material-icons text-xl">language</span>
+					<span>{{ currentLanguage()?.nativeName || currentLanguage()?.name }}</span>
+				</button>
+				}
+
+				<wbutton (wClick)="userService.logout()" type="secondary">
+					<material-icon icon="logout"></material-icon>
+
+					<span translate>Вийти</span>
+				</wbutton>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div
+	class="user fixed inset-0 overflow-hidden bg-[var(--c-bg-primary)] text-[var(--c-text-primary)]"
+	[class.user--withSidebar]="sidebar.pinnedVisible()"
+	[style.--drawer-w.px]="sidebar.widthPx()"
+>
+	<layout-topbar class="user__topbar" [sidebarToggler]="true" />
+
+	@if (sidebar.anySidebarVisible()) {
+	<layout-sidebar class="user__sidebar" />
+	}
+
+	<div
+		class="user__main relative overflow-auto max-md:mb-14 max-md:px-2 max-md:py-3"
+	>
+		<router-outlet />
+	</div>
+</div>

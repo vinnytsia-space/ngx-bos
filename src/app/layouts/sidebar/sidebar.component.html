@@ -1,0 +1,95 @@
+@if (isMobile()) {
+<button
+	type="button"
+	class="sidebar__backdrop fixed inset-x-0 top-0 bottom-[var(--topbar-h)]"
+	[attr.aria-label]="translateService.translate('Закрити меню')()"
+	(click)="closeBackdrop($event)"
+></button>
+}
+
+<aside
+	class="sidebar z-[90] flex flex-col overflow-auto bg-[var(--c-bg-secondary)] p-5 shadow"
+	[class.sidebar--min]="isMinimized()"
+	[style.width.px]="widthPx()"
+	[class]="{
+		'fixed right-0 top-0 bottom-[var(--topbar-h)] h-[calc(100dvh-var(--topbar-h))]': isMobile(),
+		'md:fixed md:right-0 md:top-14 md:h-[calc(100dvh-56px)]': isPreview(),
+		'md:sticky md:top-14 md:h-[calc(100dvh-56px)]': !isMobile() && !isPreview()
+	}"
+	(mouseleave)="sidebarService.disableBurgerHover = false; sidebarService.onBurgerHover(false)"
+	(mouseenter)="sidebarService.disableBurgerHover = true"
+>
+	<div
+		class="mt-1 flex items-center gap-2 rounded-[var(--radius)] px-2 py-1"
+		[class]="isMinimized() ? 'justify-center' : 'justify-between'"
+	>
+		<a
+			(click)="closeIfOverlay()"
+			routerLink="/profile"
+			class="inline-flex min-w-0 items-center gap-2 text-[var(--c-text-primary)] no-underline"
+			[class]="isMinimized() ? 'flex-none justify-center' : 'flex-1'"
+		>
+			<img
+				class="h-8 w-8 rounded-full"
+				[src]="userService.thumb()"
+				[attr.alt]="translateService.translate('Аватар користувача')()"
+				height="32"
+				width="32"
+			/>
+			@if (showNames()) {
+			<span class="truncate font-semibold" translate>Профіль</span>
+			}
+		</a>
+	</div>
+
+	<material-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Налаштування')() : ''"
+		[ariaLabel]="translateService.translate('Налаштування')()"
+		(click)="closeIfOverlay()"
+		routerLink="/settings"
+		icon="settings"
+	></material-icon>
+
+	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
+
+	@if (userService.role('admin')) {
+	<material-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Користувачі')() : ''"
+		[ariaLabel]="translateService.translate('Користувачі')()"
+		(click)="closeIfOverlay()"
+		routerLink="/admin/users"
+		icon="manage_accounts"
+	></material-icon>
+
+	<material-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Клієнти')() : ''"
+		[ariaLabel]="translateService.translate('Клієнти')()"
+		routerLink="/admin/clients"
+		(click)="closeIfOverlay()"
+		icon="people"
+	></material-icon>
+
+	<material-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Форми')() : ''"
+		[ariaLabel]="translateService.translate('Форми')()"
+		(click)="closeIfOverlay()"
+		routerLink="/admin/forms"
+		icon="backup_table"
+	></material-icon>
+
+	<material-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Переклади')() : ''"
+		[ariaLabel]="translateService.translate('Переклади')()"
+		routerLink="/admin/translates"
+		(click)="closeIfOverlay()"
+		icon="translate"
+	></material-icon>
+
+	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
+	}
+</aside>
