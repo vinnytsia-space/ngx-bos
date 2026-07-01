@@ -1,0 +1,1 @@
+import {r as rd,p as pf,D as Da}from'./main-XVRZPW5Q.js';var c=(()=>{class e{static{this.\u0275fac=function(t){return new(t||e)};}static{this.\u0275cmp=rd({type:e,selectors:[["ng-component"]],decls:1,vars:0,template:function(t,p){t&1&&Da(0,"router-outlet");},dependencies:[pf],encapsulation:2});}}return e})();export{c as GuestComponent};
