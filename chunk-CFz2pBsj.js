@@ -1,0 +1,1 @@
+import{Ct as dd,Rn as wf,q as Sa}from"./chunk-D7Nsru9Z.js";var c=(()=>{class e{static{this.ɵfac=function(t){return new(t||e)}}static{this.ɵcmp=dd({type:e,selectors:[[`ng-component`]],decls:1,vars:0,template:function(t,p){t&1&&Sa(0,`router-outlet`)},dependencies:[wf],encapsulation:2})}}return e})();export{c as GuestComponent};

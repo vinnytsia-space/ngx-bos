@@ -1,0 +1,1 @@
+import{i as u}from"./chunk-Btz99zWn.js";var f=u((t,e)=>{(function(){ace.require([`ace/mode/text`],function(o){typeof e==`object`&&typeof t==`object`&&e&&(e.exports=o)})})()});var chunk_SUOOBXOM_default=f();export{chunk_SUOOBXOM_default as default};
