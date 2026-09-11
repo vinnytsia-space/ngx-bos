@@ -1,0 +1,8 @@
+.profile {
+	&__card { display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-4); border: 1px solid var(--c-border); border-radius: var(--radius-card); background: var(--c-bg-secondary); box-shadow: var(--shadow-sm); }
+	&__form { display: flex; flex-direction: column; gap: var(--sp-3); }
+	&__actions { display: flex; flex-wrap: wrap; gap: var(--sp-2); padding-top: var(--sp-2); }
+	&__logout { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); width: fit-content; margin-top: var(--sp-3); padding: var(--sp-3) var(--sp-5); border: 1px solid transparent; border-radius: var(--radius-btn); background: var(--c-secondary); color: var(--c-text-secondary); font: 600 .875rem/1 var(--ff-base); cursor: pointer; }
+	&__logout:hover { background: var(--c-secondary-hover); }
+	&__logout:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+}

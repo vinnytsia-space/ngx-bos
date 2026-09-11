@@ -1,0 +1,28 @@
+.sidebar {
+	&__backdrop {
+		z-index: 80;
+		background: color-mix(in_srgb, var(--c-bg-primary) 35%, transparent);
+		pointer-events: auto;
+	}
+
+	&--min {
+		padding-inline: var(--sp-2);
+		padding-block: var(--sp-4);
+
+		/* center & tighten all menu entries in minimized rail */
+		:deep(material-icon) {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+		}
+
+		/* language button already hides text via template, just center it */
+		:deep(button) {
+			justify-content: center;
+		}
+	}
+
+	&--minimized-icon {
+		padding-left: 8px !important;
+	}
+}
