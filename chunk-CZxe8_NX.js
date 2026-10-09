@@ -1,0 +1,1 @@
+import{F as Nf,j as Ma,zn as yd}from"./chunk-C3WzVsg1.js";var c=(()=>{class e{static{this.ɵfac=function(t){return new(t||e)}}static{this.ɵcmp=yd({type:e,selectors:[[`ng-component`]],decls:1,vars:0,template:function(t,p){t&1&&Ma(0,`router-outlet`)},dependencies:[Nf],encapsulation:2})}}return e})();export{c as GuestComponent};
