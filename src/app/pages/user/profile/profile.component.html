@@ -1,0 +1,32 @@
+<section class="profile">
+	<div class="profile__card">
+		<ngx-file
+			mode="single-image"
+			view="thumb-only"
+			[wImage]="userService.thumb()"
+			(wImageChange)="updateThumb($event || '')"
+			[container]="'user'"
+			[name]="userService.user()._id + '.jpg'"
+			[accept]="'image/*'"
+			[clearable]="false"
+			[preview]="true"
+			[cropWidth]="512"
+			[cropHeight]="512"
+		></ngx-file>
+
+		<form (submit)="wFormSubmit(); $event.preventDefault()" class="profile__form">
+			<winput [placeholder]="translateService.translate('Enter your name...')()" [formField]="profileForm.name"></winput>
+			<winput [placeholder]="translateService.translate('Enter your phone...')()" [formField]="profileForm.phone" type="tel"></winput>
+			<winput [placeholder]="translateService.translate('Enter your bio...')()" [formField]="profileForm.bio" type="textarea"></winput>
+
+			<div class="profile__actions">
+				<wbutton [disabled]="isSubmitDisabled()" type="primary"><span translate>Update</span></wbutton>
+			</div>
+		</form>
+	</div>
+
+	<button type="button" class="profile__logout" (click)="userService.logout()">
+		<material-icon icon="logout"></material-icon>
+		<span translate>Logout</span>
+	</button>
+</section>

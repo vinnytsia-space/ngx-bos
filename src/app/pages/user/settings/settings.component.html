@@ -1,0 +1,28 @@
+<div class="settings">
+	<section class="settings__section">
+		<h2 class="settings__label" translate>Change password</h2>
+		<form (submit)="wSecuritySubmit(); $event.preventDefault()" class="settings__content">
+			<winput [placeholder]="translateService.translate('Enter your current password...')()" [formField]="securityForm.currentPassword" type="password"></winput>
+			<winput [placeholder]="translateService.translate('Enter your new password...')()" [formField]="securityForm.newPassword" type="password"></winput>
+			<winput [placeholder]="translateService.translate('Confirm your new password...')()" [formField]="securityForm.confirmPassword" type="password"></winput>
+			<wbutton [disabled]="isSecurityDisabled()" type="primary"><span translate>Update password</span></wbutton>
+		</form>
+	</section>
+
+	<section class="settings__section">
+		<h2 class="settings__label" translate>Theme</h2>
+		<div class="settings__content settings__content--inline"><icon-theme size="48px" [showText]="true"></icon-theme></div>
+	</section>
+
+	<section class="settings__section">
+		<h2 class="settings__label" translate>Switch language</h2>
+		@if (languageName()) {
+			<button (click)="nextLanguage()" class="settings__language" [attr.aria-label]="translateService.translate('Switch language')()" type="button">
+				<img [src]="languageFlagSrc()" class="settings__flag" alt="" aria-hidden="true" />
+				<span [translate]="languageName()"></span>
+			</button>
+		}
+	</section>
+
+	<div class="settings__actions"><wbutton (wClick)="userService.logout()" type="secondary"><material-icon icon="logout"></material-icon><span translate>Logout</span></wbutton></div>
+</div>
